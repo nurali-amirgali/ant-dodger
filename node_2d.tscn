@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://ckpecbvwnf2pj"]
+
+[ext_resource type="Texture2D" uid="uid://w3rie150k2ih" path="res://running.png" id="1_0e48y"]
+[ext_resource type="Script" uid="uid://b6ll5rseqhl88" path="res://player.gd" id="1_epypp"]
+[ext_resource type="Texture2D" uid="uid://drux0u6tiw3t" path="res://idle.png" id="2_epypp"]
+[ext_resource type="Texture2D" uid="uid://ds442aavslfl" path="res://cookie.png" id="4_0hol4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n035a"]
+size = Vector2(28, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hol4"]
+atlas = ExtResource("1_0e48y")
+region = Rect2(0, 0, 28, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6r6c"]
+atlas = ExtResource("1_0e48y")
+region = Rect2(0, 37, 28, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdubu"]
+atlas = ExtResource("1_0e48y")
+region = Rect2(28, 0, 28, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d21ai"]
+atlas = ExtResource("2_epypp")
+region = Rect2(0, 0, 26, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj586"]
+atlas = ExtResource("2_epypp")
+region = Rect2(26, 0, 26, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4d7sh"]
+atlas = ExtResource("2_epypp")
+region = Rect2(0, 37, 26, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ir8iy"]
+atlas = ExtResource("2_epypp")
+region = Rect2(26, 37, 26, 37)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_38fgq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hol4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6r6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdubu")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d21ai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj586")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4d7sh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ir8iy")
+}],
+"loop": 1,
+"name": &"stand",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_38fgq"]
+
+[node name="Node2D" type="Node2D" unique_id=2091448858]
+
+[node name="player" type="CharacterBody2D" parent="." unique_id=641264823]
+position = Vector2(69.9152, 108.23874)
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_epypp")
+speed = 300.0
+rotationSpeed = 25.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player" unique_id=196523781]
+position = Vector2(0.04240036, 0.3806305)
+shape = SubResource("RectangleShape2D_n035a")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player" unique_id=145671848]
+position = Vector2(0.04240036, 0.3806305)
+sprite_frames = SubResource("SpriteFrames_38fgq")
+animation = &"run"
+frame = 2
+frame_progress = 0.83056515
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1444641023]
+position = Vector2(576, 324)
+
+[node name="cookie" type="Area2D" parent="." unique_id=1652001504]
+position = Vector2(456, 147)
+scale = Vector2(2.1, 2.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="cookie" unique_id=361102428]
+texture = ExtResource("4_0hol4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cookie" unique_id=1350757781]
+shape = SubResource("RectangleShape2D_38fgq")
