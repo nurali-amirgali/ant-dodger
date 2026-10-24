@@ -2,8 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://w3rie150k2ih" path="res://running.png" id="1_0e48y"]
 [ext_resource type="Script" uid="uid://b6ll5rseqhl88" path="res://player.gd" id="1_epypp"]
+[ext_resource type="Script" uid="uid://h5yga0gey4c3" path="res://node_2d.gd" id="1_kdubu"]
 [ext_resource type="Texture2D" uid="uid://drux0u6tiw3t" path="res://idle.png" id="2_epypp"]
-[ext_resource type="Texture2D" uid="uid://ds442aavslfl" path="res://cookie.png" id="4_0hol4"]
+[ext_resource type="PackedScene" uid="uid://d3q0ksryyor50" path="res://cookie.tscn" id="2_q6r6c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n035a"]
 size = Vector2(28, 37)
@@ -70,11 +71,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_38fgq"]
-
 [node name="Node2D" type="Node2D" unique_id=2091448858]
+script = ExtResource("1_kdubu")
+cookieScene = ExtResource("2_q6r6c")
 
-[node name="player" type="CharacterBody2D" parent="." unique_id=641264823]
+[node name="player" type="CharacterBody2D" parent="." unique_id=641264823 groups=["player"]]
 position = Vector2(69.9152, 108.23874)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_epypp")
@@ -95,12 +96,6 @@ frame_progress = 0.83056515
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1444641023]
 position = Vector2(576, 324)
 
-[node name="cookie" type="Area2D" parent="." unique_id=1652001504]
+[node name="cookie" parent="." unique_id=217568236 instance=ExtResource("2_q6r6c")]
+visible = false
 position = Vector2(456, 147)
-scale = Vector2(2.1, 2.1)
-
-[node name="Sprite2D" type="Sprite2D" parent="cookie" unique_id=361102428]
-texture = ExtResource("4_0hol4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="cookie" unique_id=1350757781]
-shape = SubResource("RectangleShape2D_38fgq")

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://d3q0ksryyor50"]
+
+[ext_resource type="Script" uid="uid://dvyrpc6t2fssb" path="res://cookie.gd" id="1_4g1sd"]
+[ext_resource type="Texture2D" uid="uid://ds442aavslfl" path="res://cookie.png" id="2_cd8qg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_38fgq"]
+
+[node name="cookie" type="Area2D" unique_id=217568236]
+scale = Vector2(2.1, 2.1)
+script = ExtResource("1_4g1sd")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1308323826]
+texture = ExtResource("2_cd8qg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1156400425]
+shape = SubResource("RectangleShape2D_38fgq")
