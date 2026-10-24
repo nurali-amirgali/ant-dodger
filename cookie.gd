@@ -1,6 +1,6 @@
 extends Area2D
 
-signal collectedCookie
+signal collectedCookie(cookie: Node2D)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,5 +12,5 @@ func _process(delta: float) -> void:
 
 func onBodyEntered(body):
 	if body.is_in_group("player"):
-		collectedCookie.emit()
+		collectedCookie.emit(self)
 		queue_free()
