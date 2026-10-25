@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dhe1sk81lwbhd"]
+
+[ext_resource type="Script" uid="uid://p21yu0k1keo" path="res://beyblade.gd" id="1_e03yv"]
+[ext_resource type="Texture2D" uid="uid://cnnv6ypbjmx7g" path="res://beyblade.png" id="2_qg5uo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tdahi"]
+size = Vector2(2084.2114, 1031.5786)
+
+[node name="beyblade" type="CharacterBody2D" unique_id=66667282]
+z_index = 1
+script = ExtResource("1_e03yv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1397611624]
+scale = Vector2(0.32903573, 0.32903573)
+texture = ExtResource("2_qg5uo")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=781565549]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=721505416]
+scale = Vector2(0.095, 0.095)
+shape = SubResource("RectangleShape2D_tdahi")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=704861985]
+scale = Vector2(9.908198, 4.953867)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

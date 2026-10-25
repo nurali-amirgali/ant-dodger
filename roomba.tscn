@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cnae8i23yvfxi"]
+
+[ext_resource type="Script" uid="uid://e55gc7owqkt7" path="res://roomba.gd" id="1_ihwft"]
+[ext_resource type="Texture2D" uid="uid://ddcanwhqpi0n7" path="res://roomba.png" id="2_t3g6o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n035a"]
+radius = 118.06778
+
+[node name="roomba" type="CharacterBody2D" unique_id=1270453242]
+z_index = 1
+script = ExtResource("1_ihwft")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=930514055]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1825152398]
+shape = SubResource("CircleShape2D_n035a")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=288231200]
+position = Vector2(-6, -6)
+texture = ExtResource("2_t3g6o")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=645776354]
+scale = Vector2(11.545569, 11.493619)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

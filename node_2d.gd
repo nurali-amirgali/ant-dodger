@@ -6,9 +6,24 @@ extends Node2D
 @export var minCookieSpacing: int = 200
 
 @onready var player = $player
+@onready var healthBar = $healthBar
 
+var heartTexture = load("res://heart.png")
+var hurtHeartTexture = load("res://heartUsed.png")
+
+var lives: int = 3
 var score: int = 0
 var activeCookies: Array[Node2D] = []
+@onready var heartSprites: Array[Node] = healthBar.get_children()
+
+var width = 1152
+var height = 648
+
+@export var roombaScene: PackedScene
+@export var bladeScene: PackedScene
+
+@export var entitiesAtOnce: int = 1
+var activeEntities: Array[Node] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,7 +32,31 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if activeEntities.size() < entitiesAtOnce:
+		var entities = ["roomba", "blade"]
+		var entity = entities.pick_random()
+		
+		var randomPos = getRandomPos()
+		var direction = randomPos.direction_to(Vector2(width/2, height/2))
+		var entityObj: CharacterBody2D
+		if entity == "roomba":
+			entityObj = roombaScene.instantiate()
+			print("rooomba")
+		elif entity == "blade":
+			entityObj = bladeScene.instantiate()
+			print("blade")
+		
+		add_child(entityObj)
+		entityObj.position = randomPos
+		if entity == "blade":
+			entityObj.velocityDir = direction
+		else:
+			entityObj.rotation = direction.angle() + PI/2
+		entityObj.destroyed.connect(entityDestroyed)
+		
+		activeEntities.append(entityObj)
+		entityObj.playerHurt.connect(playerHurt)
+		
 
 func spawnCookie():
 	var cookie = cookieScene.instantiate()
@@ -27,6 +66,24 @@ func spawnCookie():
 	cookie.collectedCookie.connect(cookieCollected)
 	
 	activeCookies.append(cookie)
+
+func entityDestroyed(entity: Node) -> void:
+	activeEntities.erase(entity)
+	
+func getRandomPos() -> Vector2:
+	var side = randi_range(0, 3)
+
+	match side:
+		0: #top
+			return Vector2(randf_range(0, width), -10)
+		1: #bottom
+			return Vector2(randf_range(0, width), height + 10)
+		2: #left
+			return Vector2(-10, randf_range(0, height))
+		3: #right
+			return Vector2(width + 10, randf_range(0, height))
+
+	return Vector2.ZERO
 
 func getCookiePos() -> Vector2:
 	var randomPos: Vector2
@@ -42,6 +99,15 @@ func getCookiePos() -> Vector2:
 			if isSafe:
 				break
 	return randomPos
+
+func playerHurt():
+	lives -= 1
+	for i in range(heartSprites.size()):
+		var heart = heartSprites[i]
+		if i <= (lives - 1):
+			heart.texture = heartTexture
+		else:
+			heart.texture = hurtHeartTexture
 
 func cookieCollected(cookie: Node2D):
 	activeCookies.erase(cookie)

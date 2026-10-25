@@ -5,6 +5,10 @@
 [ext_resource type="Script" uid="uid://h5yga0gey4c3" path="res://node_2d.gd" id="1_kdubu"]
 [ext_resource type="Texture2D" uid="uid://drux0u6tiw3t" path="res://idle.png" id="2_epypp"]
 [ext_resource type="PackedScene" uid="uid://d3q0ksryyor50" path="res://cookie.tscn" id="2_q6r6c"]
+[ext_resource type="Texture2D" uid="uid://6bss2qtyxqm3" path="res://foot.png" id="6_kdubu"]
+[ext_resource type="PackedScene" uid="uid://dhe1sk81lwbhd" path="res://beyblade.tscn" id="7_4d7sh"]
+[ext_resource type="PackedScene" uid="uid://cnae8i23yvfxi" path="res://roomba.tscn" id="8_ir8iy"]
+[ext_resource type="Texture2D" uid="uid://cqfg50iub5y61" path="res://heart.png" id="11_hqns4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n035a"]
 size = Vector2(28, 37)
@@ -80,6 +84,8 @@ size = Vector2(1170, 14)
 [node name="Node2D" type="Node2D" unique_id=2091448858]
 script = ExtResource("1_kdubu")
 cookieScene = ExtResource("2_q6r6c")
+roombaScene = ExtResource("8_ir8iy")
+bladeScene = ExtResource("7_4d7sh")
 
 [node name="player" type="CharacterBody2D" parent="." unique_id=641264823 groups=["player"]]
 position = Vector2(69.9152, 108.23874)
@@ -123,3 +129,39 @@ shape = SubResource("RectangleShape2D_4lrlm")
 [node name="bottomWall" type="CollisionShape2D" parent="playArea" unique_id=698438083]
 position = Vector2(577, 655)
 shape = SubResource("RectangleShape2D_4lrlm")
+
+[node name="Label" type="Label" parent="." unique_id=929536160]
+z_index = 2
+offset_left = 560.0
+offset_top = -10.0
+offset_right = 600.0
+offset_bottom = 73.0
+theme_override_font_sizes/font_size = 60
+text = "0"
+
+[node name="foot" type="Area2D" parent="." unique_id=330309589]
+visible = false
+position = Vector2(966, 491)
+scale = Vector2(19.245, 19.245)
+
+[node name="Sprite2D" type="Sprite2D" parent="foot" unique_id=816437434]
+texture = ExtResource("6_kdubu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="foot" unique_id=948107445]
+
+[node name="healthBar" type="Area2D" parent="." unique_id=2085955829]
+position = Vector2(1123.0001, 24)
+scale = Vector2(0.17415322, 0.17415322)
+
+[node name="heart1" type="Sprite2D" parent="healthBar" unique_id=982674678]
+texture = ExtResource("11_hqns4")
+
+[node name="heart2" type="Sprite2D" parent="healthBar" unique_id=2117385174]
+position = Vector2(-321.55664, 0)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("11_hqns4")
+
+[node name="heart3" type="Sprite2D" parent="healthBar" unique_id=796274485]
+position = Vector2(-643.11255, 0)
+scale = Vector2(0.9999999, 0.9999999)
+texture = ExtResource("11_hqns4")
