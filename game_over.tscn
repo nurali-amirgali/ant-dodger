@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://d01sst24jcrgt"]
+
+[ext_resource type="Script" uid="uid://0putvaeybp17" path="res://game_over.gd" id="1_yxx3c"]
+[ext_resource type="Texture2D" uid="uid://dm7d0f2dybxgn" path="res://deadAnt.png" id="2_ccer4"]
+
+[node name="gameOver" type="Control" unique_id=1949566815]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yxx3c")
+
+[node name="title" type="Label" parent="." unique_id=1438684139]
+layout_mode = 0
+offset_left = 252.99998
+offset_top = 18.0
+offset_right = 655.0
+offset_bottom = 114.0
+scale = Vector2(1.5606962, 1.5606962)
+theme_override_font_sizes/font_size = 70
+text = "GAME OVER"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1080997056]
+position = Vector2(128.99994, 178.99998)
+scale = Vector2(0.4100233, 0.4100233)
+texture = ExtResource("2_ccer4")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=618006362]
+position = Vector2(996.0001, 183)
+scale = Vector2(0.4100233, 0.4100233)
+texture = ExtResource("2_ccer4")
+
+[node name="bg" type="ColorRect" parent="." unique_id=424565001]
+z_index = -1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(28.994566, 16.541769)
+mouse_filter = 2
+color = Color(0.5333905, 0, 0.0021863393, 1)
+
+[node name="score" type="Label" parent="." unique_id=1017426665]
+layout_mode = 0
+offset_left = 465.0
+offset_top = 155.0
+offset_right = 673.0
+offset_bottom = 231.0
+theme_override_font_sizes/font_size = 55
+text = "Score: 0"
+
+[node name="retry" type="Button" parent="." unique_id=488851456]
+layout_mode = 0
+offset_left = 412.0
+offset_top = 248.0
+offset_right = 743.0
+offset_bottom = 404.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 108
+text = "RETRY"
+
+[node name="quit" type="Button" parent="." unique_id=2102683481]
+layout_mode = 0
+offset_left = 470.0
+offset_top = 447.0
+offset_right = 687.0
+offset_bottom = 574.0
+theme_override_font_sizes/font_size = 87
+text = "QUIT"
+
+[connection signal="pressed" from="retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]

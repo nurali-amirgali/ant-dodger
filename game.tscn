@@ -1,44 +1,44 @@
 [gd_scene format=3 uid="uid://ckpecbvwnf2pj"]
 
-[ext_resource type="Texture2D" uid="uid://w3rie150k2ih" path="res://running.png" id="1_0e48y"]
-[ext_resource type="Script" uid="uid://b6ll5rseqhl88" path="res://player.gd" id="1_epypp"]
-[ext_resource type="Script" uid="uid://h5yga0gey4c3" path="res://node_2d.gd" id="1_kdubu"]
-[ext_resource type="Texture2D" uid="uid://drux0u6tiw3t" path="res://idle.png" id="2_epypp"]
-[ext_resource type="PackedScene" uid="uid://d3q0ksryyor50" path="res://cookie.tscn" id="2_q6r6c"]
-[ext_resource type="Texture2D" uid="uid://6bss2qtyxqm3" path="res://foot.png" id="6_kdubu"]
-[ext_resource type="PackedScene" uid="uid://dhe1sk81lwbhd" path="res://beyblade.tscn" id="7_4d7sh"]
-[ext_resource type="PackedScene" uid="uid://cnae8i23yvfxi" path="res://roomba.tscn" id="8_ir8iy"]
-[ext_resource type="Texture2D" uid="uid://cqfg50iub5y61" path="res://heart.png" id="11_hqns4"]
+[ext_resource type="Script" uid="uid://h5yga0gey4c3" path="res://gameManager.gd" id="1_vef74"]
+[ext_resource type="PackedScene" uid="uid://d3q0ksryyor50" path="res://cookie.tscn" id="2_hve3p"]
+[ext_resource type="PackedScene" uid="uid://cnae8i23yvfxi" path="res://roomba.tscn" id="3_mfdv2"]
+[ext_resource type="PackedScene" uid="uid://dhe1sk81lwbhd" path="res://beyblade.tscn" id="4_iotsf"]
+[ext_resource type="Script" uid="uid://b6ll5rseqhl88" path="res://player.gd" id="5_lc2xo"]
+[ext_resource type="Texture2D" uid="uid://w3rie150k2ih" path="res://running.png" id="6_215e1"]
+[ext_resource type="Texture2D" uid="uid://drux0u6tiw3t" path="res://idle.png" id="7_7sc4i"]
+[ext_resource type="Texture2D" uid="uid://6bss2qtyxqm3" path="res://foot.png" id="8_80cx4"]
+[ext_resource type="Texture2D" uid="uid://cqfg50iub5y61" path="res://heart.png" id="9_e8heu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n035a"]
 size = Vector2(28, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0hol4"]
-atlas = ExtResource("1_0e48y")
+atlas = ExtResource("6_215e1")
 region = Rect2(0, 0, 28, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q6r6c"]
-atlas = ExtResource("1_0e48y")
+atlas = ExtResource("6_215e1")
 region = Rect2(0, 37, 28, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kdubu"]
-atlas = ExtResource("1_0e48y")
+atlas = ExtResource("6_215e1")
 region = Rect2(28, 0, 28, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d21ai"]
-atlas = ExtResource("2_epypp")
+atlas = ExtResource("7_7sc4i")
 region = Rect2(0, 0, 26, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rj586"]
-atlas = ExtResource("2_epypp")
+atlas = ExtResource("7_7sc4i")
 region = Rect2(26, 0, 26, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4d7sh"]
-atlas = ExtResource("2_epypp")
+atlas = ExtResource("7_7sc4i")
 region = Rect2(0, 37, 26, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ir8iy"]
-atlas = ExtResource("2_epypp")
+atlas = ExtResource("7_7sc4i")
 region = Rect2(26, 37, 26, 37)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_38fgq"]
@@ -81,16 +81,16 @@ size = Vector2(10, 674)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4lrlm"]
 size = Vector2(1170, 14)
 
-[node name="Node2D" type="Node2D" unique_id=2091448858]
-script = ExtResource("1_kdubu")
-cookieScene = ExtResource("2_q6r6c")
-roombaScene = ExtResource("8_ir8iy")
-bladeScene = ExtResource("7_4d7sh")
+[node name="game" type="Node2D" unique_id=2091448858]
+script = ExtResource("1_vef74")
+cookieScene = ExtResource("2_hve3p")
+roombaScene = ExtResource("3_mfdv2")
+bladeScene = ExtResource("4_iotsf")
 
 [node name="player" type="CharacterBody2D" parent="." unique_id=641264823 groups=["player"]]
 position = Vector2(69.9152, 108.23874)
 scale = Vector2(1.5, 1.5)
-script = ExtResource("1_epypp")
+script = ExtResource("5_lc2xo")
 speed = 300.0
 rotationSpeed = 25.0
 
@@ -108,7 +108,7 @@ frame_progress = 0.83056515
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1444641023]
 position = Vector2(576, 324)
 
-[node name="cookie" parent="." unique_id=217568236 instance=ExtResource("2_q6r6c")]
+[node name="cookie" parent="." unique_id=217568236 instance=ExtResource("2_hve3p")]
 visible = false
 position = Vector2(456, 147)
 
@@ -130,7 +130,7 @@ shape = SubResource("RectangleShape2D_4lrlm")
 position = Vector2(577, 655)
 shape = SubResource("RectangleShape2D_4lrlm")
 
-[node name="Label" type="Label" parent="." unique_id=929536160]
+[node name="scoreLabel" type="Label" parent="." unique_id=929536160]
 z_index = 2
 offset_left = 560.0
 offset_top = -10.0
@@ -145,23 +145,24 @@ position = Vector2(966, 491)
 scale = Vector2(19.245, 19.245)
 
 [node name="Sprite2D" type="Sprite2D" parent="foot" unique_id=816437434]
-texture = ExtResource("6_kdubu")
+texture = ExtResource("8_80cx4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="foot" unique_id=948107445]
 
 [node name="healthBar" type="Area2D" parent="." unique_id=2085955829]
+z_index = 3
 position = Vector2(1123.0001, 24)
 scale = Vector2(0.17415322, 0.17415322)
 
 [node name="heart1" type="Sprite2D" parent="healthBar" unique_id=982674678]
-texture = ExtResource("11_hqns4")
+texture = ExtResource("9_e8heu")
 
 [node name="heart2" type="Sprite2D" parent="healthBar" unique_id=2117385174]
 position = Vector2(-321.55664, 0)
 scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("11_hqns4")
+texture = ExtResource("9_e8heu")
 
 [node name="heart3" type="Sprite2D" parent="healthBar" unique_id=796274485]
 position = Vector2(-643.11255, 0)
 scale = Vector2(0.9999999, 0.9999999)
-texture = ExtResource("11_hqns4")
+texture = ExtResource("9_e8heu")

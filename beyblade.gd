@@ -23,6 +23,9 @@ signal destroyed(blade: CharacterBody2D)
 
 func _ready():
 	$Area2D.body_entered.connect(onBodyEntered)
+	if [true, false].pick_random():
+		lingerTurnSpeed = -lingerTurnSpeed
+	turnActivationDist = randi_range(50, 200)
 	
 func onBodyEntered(body):
 	if body.is_in_group("player"):
@@ -52,10 +55,9 @@ func start_linger_timer() -> void:
 	disableTurn()
 	
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	if stopTurning:
-		print("destroyed")
-		destroyed.emit(self)
-		queue_free()
+	print("destroyed")
+	destroyed.emit(self)
+	queue_free()
 
 func disableTurn() -> void:
 	stopTurning = true

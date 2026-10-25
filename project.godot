@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="ant dodger"
-run/main_scene="res://node_2d.tscn"
+run/main_scene="uid://i7y8dxbqh8cs"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameData="*uid://clajqd6yspqma"
 
 [display]
 
@@ -58,3 +62,4 @@ moveDown={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+textures/vram_compression/import_etc2_astc=true

@@ -9,6 +9,7 @@ radius = 118.06778
 [node name="roomba" type="CharacterBody2D" unique_id=1270453242]
 z_index = 1
 script = ExtResource("1_ihwft")
+speed = 300.0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=930514055]
 

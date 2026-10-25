@@ -10,7 +10,7 @@ var turningRate = 20
 func _ready():
 	$Area2D.body_entered.connect(onBodyEntered)
 	turningRate = randi_range(-20, 20)
-	turningRate = 0
+	#turningRate = 0
 	
 func onBodyEntered(body):
 	if body.is_in_group("player"):
