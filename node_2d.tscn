@@ -71,6 +71,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_38fgq"]
+size = Vector2(10, 674)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4lrlm"]
+size = Vector2(1170, 14)
+
 [node name="Node2D" type="Node2D" unique_id=2091448858]
 script = ExtResource("1_kdubu")
 cookieScene = ExtResource("2_q6r6c")
@@ -99,3 +105,21 @@ position = Vector2(576, 324)
 [node name="cookie" parent="." unique_id=217568236 instance=ExtResource("2_q6r6c")]
 visible = false
 position = Vector2(456, 147)
+
+[node name="playArea" type="StaticBody2D" parent="." unique_id=590085062]
+
+[node name="leftWall" type="CollisionShape2D" parent="playArea" unique_id=209023874]
+position = Vector2(-5, 327)
+shape = SubResource("RectangleShape2D_38fgq")
+
+[node name="rightWall" type="CollisionShape2D" parent="playArea" unique_id=1563987862]
+position = Vector2(1157, 327)
+shape = SubResource("RectangleShape2D_38fgq")
+
+[node name="topWall" type="CollisionShape2D" parent="playArea" unique_id=400259837]
+position = Vector2(578, -7)
+shape = SubResource("RectangleShape2D_4lrlm")
+
+[node name="bottomWall" type="CollisionShape2D" parent="playArea" unique_id=698438083]
+position = Vector2(577, 655)
+shape = SubResource("RectangleShape2D_4lrlm")

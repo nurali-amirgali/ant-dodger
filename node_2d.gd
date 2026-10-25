@@ -2,8 +2,8 @@ extends Node2D
 
 @export var numCookies: int = 3
 @export var cookieScene: PackedScene
-@export var minDistance: int = 150
-@export var minCookieSpacing: int = 50
+@export var minDistance: int = 200
+@export var minCookieSpacing: int = 200
 
 @onready var player = $player
 
